@@ -12,7 +12,6 @@ class CookieModel
       break if local_cookie == -1
       local_cookie if col_position + 1 == nil && @map[row_index + 1] == nil
       local_cookie += find_path(@map[row_index + 1][col_position..-1], row_index + 1) unless @map[row_index + 1] == nil
-      # cookies += local_cookie
       max_cookies = local_cookie if local_cookie > max_cookies
     end
 

@@ -1,5 +1,5 @@
 require 'rspec/core/rake_task'
 
-task :play do
+task :get_cookies do
   ruby "bin/cookie_monster"
 end
