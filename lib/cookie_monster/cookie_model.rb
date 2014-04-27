@@ -5,17 +5,18 @@ class CookieModel
     @map = create_map
   end
 
-  def find_path(map ||= @map)
+  def find_path(row = @map[0], row_index = 0)
+    max_cookies = 0
 
-    possible_cookies = 0
-    map.each_with_index do |row, row_position|
-      cookies.each_with_index do |cookies, col_position|
-        break if cookies == -1
-        cookies if col_position + 1 == nil
-        find_path(map[(row_position + 1)..-1][col_position..-1])
-      end
+    row.each_with_index do |local_cookie, col_position|
+      break if local_cookie == -1
+      local_cookie if col_position + 1 == nil && @map[row_index + 1] == nil
+      local_cookie += find_path(@map[row_index + 1][col_position..-1], row_index + 1) unless @map[row_index + 1] == nil
+      # cookies += local_cookie
+      max_cookies = local_cookie if local_cookie > max_cookies
     end
 
+    max_cookies
   end
 
   def create_map
