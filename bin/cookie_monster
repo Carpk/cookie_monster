@@ -1,6 +1,6 @@
 
 $LOAD_PATH.unshift File.expand_path '../../lib', __FILE__
 
-require 'cookie_monster/cookie_controller'
+require 'cookie_monster/console'
 
 CookieController.new

@@ -1,8 +1,8 @@
 
 class CookieViewer
 
-  def initialize
-    puts "hello from viwer"
+  def show(arg)
+    puts "most cookies he can eat: #{arg}"
   end
 
 end
