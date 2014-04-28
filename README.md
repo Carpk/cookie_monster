@@ -6,5 +6,4 @@ This is the cookie monster challenge from [Ruby Quiz](http://rubyquiz.strd6.com/
 
 Run the following command to find the answer:
 
-`rake get_cookies`
-
+`rake start`

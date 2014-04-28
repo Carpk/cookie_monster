@@ -7,15 +7,18 @@ class CookieModel
 
   def find_path(row = @map[0], row_index = 0)
     max_cookies = 0
-
     row.each_with_index do |local_cookie, col_position|
       break if local_cookie == -1
-      local_cookie if col_position + 1 == nil && @map[row_index + 1] == nil
+      # if @map[row_index][col_position + 1] == nil && @map[row_index + 1] == nil
+      #   local_cookie
+      # end
+      local_cookie += row[0..col_position].reduce(:+)
       local_cookie += find_path(@map[row_index + 1][col_position..-1], row_index + 1) unless @map[row_index + 1] == nil
+
       max_cookies = local_cookie if local_cookie > max_cookies
     end
 
-    max_cookies
+
   end
 
   def create_map
