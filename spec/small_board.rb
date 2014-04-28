@@ -1,3 +1,34 @@
 require_relative '../lib/cookie_monster/console'
 
-puts CookieModel.new.find_path([ 0, 0, 3, 1, 5, 2, 1, 5, 4, 1, 3, 3], 11)
+puts CookieModel.new.find_path([ 0, 0, 3, 1, 5, 2, 1, 5, 4, 1, 3, 3], 12) == 28
+
+
+
+puts CookieModel.new.find_path([ 1, 3, 0, 5,-1, 7,-1,-1, 0, 4, 2, 1], 10) == 34
+
+
+
+
+
+
+
+
+
+
+
+
+
+# require 'spec_helper'
+
+# describe Gravatar do
+#   context 'given an email' do
+#     let(:gravatar) { Gravatar.new("HELLO@example.com  ") }
+#     it 'should generate the hash that gravatar needs' do
+#       gravatar.hash.should == "cb8419c1d471d55fbca0d63d1fb2b6ac"
+#     end
+
+#     it 'should generate the url that will get the gravatar' do
+#       gravatar.url.should == "http://www.gravatar.com/avatar/cb8419c1d471d55fbca0d63d1fb2b6ac?d=retro&s=134"
+#     end
+#   end
+# end

@@ -9,16 +9,15 @@ class CookieModel
     max_cookies = 0
     row.each_with_index do |local_cookie, col_position|
       break if local_cookie == -1
-      # if @map[row_index][col_position + 1] == nil && @map[row_index + 1] == nil
-      #   local_cookie
-      # end
-      local_cookie += row[0..col_position].reduce(:+)
-      local_cookie += find_path(@map[row_index + 1][col_position..-1], row_index + 1) unless @map[row_index + 1] == nil
+      local_sum = 0
 
-      max_cookies = local_cookie if local_cookie > max_cookies
+      local_sum += row[0..col_position].reduce(:+)
+      local_sum += find_path(@map[row_index + 1][col_position..-1], row_index + 1) unless @map[row_index + 1] == nil
+
+      max_cookies = local_sum if local_sum > max_cookies
     end
 
-
+    max_cookies
   end
 
   def create_map
