@@ -7,3 +7,7 @@ This is the cookie monster challenge from [Ruby Quiz](http://rubyquiz.strd6.com/
 Run the following command to find the answer:
 
 `rake start`
+
+Run tests suite:
+
+`rake test`
