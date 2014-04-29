@@ -1,10 +1,10 @@
 require_relative '../lib/cookie_monster/console'
 
-puts CookieModel.new.find_path([ 0, 0, 3, 1, 5, 2, 1, 5, 4, 1, 3, 3], 12) == 28
+puts "should be 28, gets: #{CookieModel.new.find_path([ 0, 0, 3, 1, 5, 2, 1, 5, 4, 1, 3, 3], 12)}"
 
 
 
-puts CookieModel.new.find_path([ 1, 3, 0, 5,-1, 7,-1,-1, 0, 4, 2, 1], 10) == 34
+puts "should be 34, gets: #{CookieModel.new.find_path([ 1, 3, 0, 5,-1, 7,-1,-1, 0, 4, 2, 1], 10)}"
 
 
 

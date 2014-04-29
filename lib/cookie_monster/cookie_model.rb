@@ -1,24 +1,45 @@
 
 class CookieModel
+  attr_reader :max_cookies
 
   def initialize
     @map = create_map
+    @max_cookies = 0
   end
 
-  def find_path(row = @map[0], row_index = 0)
-    max_cookies = 0
+  def find_path(row = @map[0], row_index = 0, passing_sum = 0)
+    row_index +=1
     row.each_with_index do |local_cookie, col_position|
       break if local_cookie == -1
-      local_sum = 0
 
-      local_sum += row[0..col_position].reduce(:+)
-      local_sum += find_path(@map[row_index + 1][col_position..-1], row_index + 1) unless @map[row_index + 1] == nil
-
-      max_cookies = local_sum if local_sum > max_cookies
+      local_sum = row[0..col_position].reduce(:+)
+      unless @map[row_index] == nil
+        find_path(@map[row_index][col_position..-1], row_index, (passing_sum + local_sum))
+      else
+        @max_cookies = (local_sum + passing_sum) if (local_sum + passing_sum) > @max_cookies
+      end
     end
 
-    max_cookies
+    @max_cookies
   end
+
+  # def find_path(row = @map[0], row_index = 0)
+  #   # @max_cookies = 0
+  #   row_index += 1
+  #   row.each_with_index do |local_cookie, col_position|
+  #     break if local_cookie == -1
+
+  #     local_sum = row[0..col_position].reduce(:+)
+  #     unless @map[row_index] == nil
+  #       return_sum = find_path(@map[row_index][col_position..-1], row_index)
+  #       local_sum += return_sum.reduce(:+) unless return_sum == nil
+  #     end
+  #     # p local_sum
+  #     @max_cookies = local_sum if local_sum > @max_cookies
+  #     local_sum
+  #   end
+  #   # @max_cookies
+  # end
 
   def create_map
    [[ 1, 3, 0, 5,-1, 7,-1,-1, 0, 4, 2, 1],
@@ -35,3 +56,8 @@ class CookieModel
     [ 0, 0, 3, 1, 5, 2, 1, 5, 4, 1, 3, 3]]
   end
 end
+
+
+# puts cookie = CookieModel.new
+# puts cookie.find_path
+# puts cookie.max_cookies
