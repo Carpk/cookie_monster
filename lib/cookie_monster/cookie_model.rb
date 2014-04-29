@@ -2,13 +2,13 @@
 class CookieModel
   attr_reader :max_cookies
 
-  def initialize
-    @map = create_map
+  def initialize(map = create_map)
+    @map = map
     @max_cookies = 0
   end
 
   def find_path(row = @map[0], row_index = 0, passing_sum = 0)
-    row_index +=1
+    row_index += 1
     row.each_with_index do |local_cookie, col_position|
       break if local_cookie == -1
 
@@ -24,7 +24,7 @@ class CookieModel
   end
 
   # def find_path(row = @map[0], row_index = 0)
-  #   # @max_cookies = 0
+
   #   row_index += 1
   #   row.each_with_index do |local_cookie, col_position|
   #     break if local_cookie == -1
@@ -34,11 +34,11 @@ class CookieModel
   #       return_sum = find_path(@map[row_index][col_position..-1], row_index)
   #       local_sum += return_sum.reduce(:+) unless return_sum == nil
   #     end
-  #     # p local_sum
   #     @max_cookies = local_sum if local_sum > @max_cookies
+  #     puts @max_cookies
   #     local_sum
   #   end
-  #   # @max_cookies
+
   # end
 
   def create_map
@@ -59,5 +59,5 @@ end
 
 
 # puts cookie = CookieModel.new
-# puts cookie.find_path
+# cookie.find_path
 # puts cookie.max_cookies
