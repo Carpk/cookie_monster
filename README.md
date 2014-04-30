@@ -8,9 +8,13 @@ Run the following command to find the answer:
 
 `rake start`
 
-Run tests suite:
+Run the basic test suite:
 
 `rake test`
+
+Run the rspec test suite:
+
+`rake rspec`
 
 ### Screenshot
 
