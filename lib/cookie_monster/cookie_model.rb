@@ -7,23 +7,17 @@ class CookieModel
     @max_cookies = 0
   end
 
-  def find_path(row = @map[0], row_index = 0, passing_sum = 0)
+  def find_path(row = @map[0], row_index = 0, starting_index = 0, passing_sum = 0)
     row_index += 1
-    # row.each_with_index.map! {|e, i|  i..-1 if e == -1}
-    catch :done do
       row.each_with_index do |local_cookie, col_position|
-        if local_cookie == -1
-          row.clear
-          throw :done
-        end
+        break if local_cookie == -1
         local_sum = row[0..col_position].reduce(:+) + passing_sum
         unless @map[row_index] == nil
-          p @map[row_index][col_position..-1]
-          find_path(@map[row_index][col_position..-1], row_index, local_sum)
+          col_position += starting_index
+          find_path(@map[row_index][col_position..-1], row_index, col_position, local_sum)
         else
           @max_cookies = (local_sum ) if (local_sum) > @max_cookies && row[col_position + 1] == nil
         end
-      end
     end
     @max_cookies
   end
